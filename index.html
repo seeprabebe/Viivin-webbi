@@ -1,18 +1,73 @@
 <!DOCTYPE html>
-<html lang="fi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viivi on kissa</title>
-    <style>
-      body {
-          background-color: #ffb3b3;
-      }
-  </style>
+<html>
 
+<head>
+  <title>Kirjakulma</title>
 </head>
+
 <body>
-    <h1>Viivi on <b>selibakissa</b> nyt</h1>
-    <img src="viivi.jpg" alt="kissakuva" width="500" height="360">
+  <div class="header">
+  <h1>Kirjakulma</h1>
+  </div>
+  <div class="nav">
+  <p>
+    <a href="/search">Haku</a> |
+    <a href="/register">Luo tunnus</a> |
+    {% if session.user_id %}
+    <a href="/logout">Kirjaudu ulos</a> |
+    <a href="/user/{{session.user_id}}">Profiili</a>
+    {% else %}
+    <a href="/login">Kirjaudu sisään</a>
+    {% endif %}
+  </p>
+
+  </d />
+  {% for thread in threads %}
+  <div class="thread">
+  <p>
+    <a href="/thread/{{ thread.id }}">{{ thread.title }}</a>
+    <br />
+    {{ thread.total }} kommenttia, uusin {{ thread.last }}
+  </p>
+  <hr />
+  </div>
+  {% endfor %}
+
+  <p>
+    <a href="/{{ page - 1 }}">&lt;&lt;</a>
+    Sivu {{ page }}/{{ page_count }}
+    <a href="/{{ page + 1 }}">&gt;&gt;</a>
+  </p>
+  <hr />
+  </div>
+
+  <div class="bookthread">
+  {% if session.user_id %}
+  <h2>Uusi kirjaketju</h2>
+
+  <form action="/new_thread" method="post">
+    <p>
+      Kirjailija / Kirjan nimi:<br />
+      <input type="text" name="title" maxlength="100" required />
+    </p>
+    <p>
+      Kommentti:<br />
+      <textarea name="content" rows="5" cols="40" maxlength="5000"></textarea>
+    </p>
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
+    <input type="submit" value="Lähetä" />
+  </form>
+  </div>
+  {% endif %}
+
+  {% for message in get_flashed_messages() %}
+  <p class="info">
+    {{ message }}
+  </p>
+  {% endfor %}
+
+  <link rel="stylesheet" href="/static/main.css">
+
 </body>
+
 </html>

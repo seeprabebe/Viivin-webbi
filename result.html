@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Julkaisu</title>
+</head>
+
+<body>
+  <p>Kirjallisuudenlaji {{ laji }}</p>
+  <p>
+    Genre:
+    <ul>
+      {% for genre in genres %}
+      <li>{{ genre }}</li>
+      {% endfor %}
+    </ul>
+  </p>
+  <p>
+    Analyysi: <br />
+    {{ message }}
+  </p>
+</body>
+
+</html>
+

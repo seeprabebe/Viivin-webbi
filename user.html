@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Käyttäjä {{ user.username }}</title>
+</head>
+
+<body>
+  <h1>Käyttäjä {{ user.username }}</h1>
+
+  {% for message in get_flashed_messages() %}
+  <p>
+    <b>{{ message }}</b>
+  </p>
+  {% endfor %}
+
+  <div class="profile_picture">
+  {% if user.has_image %}
+  <img src="/image/{{ user.id }}" alt="Käyttäjän {{ user.username }} kuva" style="width:20%">
+  </div>
+  {% endif %}
+
+  {% if user.id == session.user_id %}
+  <p>
+    <a href="/add_image">Lisää profiilikuva</a>
+  </p>
+  {% endif %}
+
+  <p>
+    Käyttäjä on lähettänyt {{ messages | count }} kommenttia
+  </p>
+
+  {% if messages %}
+  <p>
+    Ensimmäinen kommentti lähetetty {{ messages[-1].sent_at }}
+  </p>
+  <p>
+    Viimeisin kommentti lähetetty {{ messages[0].sent_at }}
+  </p>
+  {% endif %}
+
+  <h2>Kommentit</h2>
+
+  <ul>
+  {% for message in messages %}
+    <li>
+      <a href="/thread/{{ message.thread_id }}#{{ message.id }}">
+        {{ message.thread_title }}
+      </a>
+      <br />
+      ({{ message.sent_at }})
+    </li>  
+  {% endfor %}
+  </ul>
+  <p>
+    <a href="/">Etusivulle</a>
+  </p>
+</body>
+
+</html>

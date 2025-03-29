@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Kirjaudu sisään</title>
+</head>
+
+<body>
+  <h1>Kirjaudu sisään</h1>
+
+  {% for message in get_flashed_messages() %}
+  <p>
+    <b>{{ message }}</b>
+  </p>
+  {% endfor %}
+
+  <form action="/login" method="post">
+    <p>
+      <label for="username">Tunnus:</label><br />
+      <input type="text" id="username" name="username" />
+    </p>
+    <p>
+      <label for="password">Salasana</label>:<br />
+      <input type="password" id="password" name="password" />
+    </p>
+    {% if next_page %}
+    <input type="hidden" name="next_page" value="{{ next_page }}" />
+    {% else %}
+    <input type="hidden" name="next_page" value="/" />
+    {% endif %}
+    <input type="submit" value="Kirjaudu" />
+  </form>
+
+  <hr />
+  <p>
+    <a href="/">Etusivulle</a>
+  </p>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Kirja</title>
+</head>
+
+<body>
+    <form action="/result" method="post">
+    <p>Kirjallisuuden laji:</p>
+    <p>
+      <input type="radio" name="laji" value="Kaunokirjallisuus" /> Kaunokirjallisuus
+      <input type="radio" name="laji" value="Tietokirjallisuus" /> Tietokirjallisuus
+    </p>
+    <p>Genre:</p>
+    <p>
+      <input type="checkbox" name="genre" value="fantasia" /> fantasia
+      <input type="checkbox" name="genre" value="romantiikka" /> romantiikka
+      <input type="checkbox" name="genre" value="kauhu" /> kauhu
+      <input type="checkbox" name="genre" value="scifi" /> scifi
+      <input type="checkbox" name="genre" value="seikkailu" /> seikkailu
+      <input type="checkbox" name="genre" value="historia" /> historia
+      <input type="checkbox" name="genre" value="elämäkerta" /> elämäkerta
+      <input type="checkbox" name="genre" value="lastenkirjallisuus" /> lastenkirjallisuus
+    </p>
+    <p>Kerro lisää kirjasta: <br />
+      <textarea name="message" rows="3" cols="50"></textarea>
+    </p>
+    <input type="submit" value="Lähetä" />
+  </form>
+</body>
+
+</html>
