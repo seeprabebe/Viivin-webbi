@@ -2,27 +2,27 @@ body {
     margin: auto;
     max-width: 40em;
     font-family: serif;
-    background-color: #A7BE9C;
+    background-color: #F0C8AE;
   }
 
   .header {
-    background-color: #A7BE9C;
-    color: #144048;
+    background-color: #F0C8AE;
+    color: #D86161;
   }
   .nav {
-    color: #144048;
+    color: #D86161;
   } 
   .thread {
-    border: 1px solid #144048;
+    border: 1px solid #D86161;
     margin: 1em;
     padding: 0.2em 0.5em;
     background-color: #89A27E; 
-    color: #144048;
+    color: #D86161;
     padding: 1em;
     margin: 0.3em 0;
   }
   .bookthread {
-    color: #144048;
+    color: #D86161;
     max-width: 70em;   
   } 
   .profile_picture {
