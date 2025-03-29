@@ -2,20 +2,18 @@
 <html>
 
 <head>
-  <title>Kirjakulma</title>
+  <title>Viivi on kissa</title>
 </head>
 
 <body>
   <div class="header">
-  <h1>Kirjakulma</h1>
+  <h1>Viivi on seliba<b>kissa</b></h1>
   </div>
   <div class="nav">
   <p>
-    <a href="/search">Haku</a> |
     <a href="/register">Luo tunnus</a> |
     {% if session.user_id %}
     <a href="/logout">Kirjaudu ulos</a> |
-    <a href="/user/{{session.user_id}}">Profiili</a>
     {% else %}
     <a href="/login">Kirjaudu sisään</a>
     {% endif %}
@@ -43,13 +41,9 @@
 
   <div class="bookthread">
   {% if session.user_id %}
-  <h2>Uusi kirjaketju</h2>
+  <h2>Kommentti Viiville</h2>
 
   <form action="/new_thread" method="post">
-    <p>
-      Kirjailija / Kirjan nimi:<br />
-      <input type="text" name="title" maxlength="100" required />
-    </p>
     <p>
       Kommentti:<br />
       <textarea name="content" rows="5" cols="40" maxlength="5000"></textarea>
