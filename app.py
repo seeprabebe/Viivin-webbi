@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import sqlite3
+import db
 
 app = Flask(__name__)
 
@@ -16,6 +17,12 @@ def index():
     db = sqlite3.connect("database.db")
     messages = db.execute("SELECT content FROM messages").fetchall()
     db.close()
+    count = len(messages)
+    return render_template("index.html", count=count, messages=messages)
+    
+@app.route("/")
+def index():
+    messages = db.query("SELECT content FROM messages")
     count = len(messages)
     return render_template("index.html", count=count, messages=messages)
 
