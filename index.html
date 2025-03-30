@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viivi on kissa</title>
      <p>
-    Viestien määrä: {{ count }}
-  </p>
-  <hr />
-  {% for message in messages %}
-  <p>
-    {{ message.content }}
-  </p>
-  <hr />
-  {% endfor %}
-  
-  <p>
-    <a href="/new">Lähetä viesti</a>
-  </p>
+     Viestien määrä: {{ count }}
+      </p>
+      <hr />
+      {% for message in messages %}
+      <p>
+        {{ message.content }}
+      </p>
+      <hr />
+      {% endfor %}
+      
+      <p>
+        <a href="/new">Lähetä viesti</a>
+      </p>
     <style>
       body {
           background-color: #ffb3b3;
